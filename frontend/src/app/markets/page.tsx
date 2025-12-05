@@ -1,43 +1,24 @@
 import MarketCard from "../../components/MarketCard";
-import type { Market } from "../../types/Market";
+import { fetchTopMarkets } from "../../lib/polymarket";
 
-const MOCK_MARKETS: Market[] = [
-  {
-    id: "1",
-    question: "Will BTC be above $100k by 2026?",
-    yesPrice: 0.42,
-    noPrice: 0.58,
-    volume: 123456,
-  },
-  {
-    id: "2",
-    question: "Will ETH flip BTC in market cap before 2030?",
-    yesPrice: 0.21,
-    noPrice: 0.79,
-    volume: 78901,
-  },
-  {
-    id: "3",
-    question: "Will SOL stay in the top 5 by market cap through 2026?",
-    yesPrice: 0.63,
-    noPrice: 0.37,
-    volume: 54321,
-  },
-];
+export default async function MarketsPage() {
+  const markets = await fetchTopMarkets(5);
 
-export default function MarketsPage() {
   return (
     <>
+      {/* Intro card */}
       <div className="card">
-        <h1 className="page-title">Top markets remix</h1>
+        <h1 className="page-title">Top Polymarket Markets</h1>
         <p className="page-subtitle">
-          These are example markets that degen4good can mirror from Polymarket.
-          Make free predictions and route losses toward real-world good.
+          Live markets pulled directly from Polymarket. degen4good lets you play
+          with prediction data using points and every wrong call helps route
+          donations toward real world causes.
         </p>
       </div>
 
-      <div className="grid grid-2">
-        {MOCK_MARKETS.map((m) => (
+      {/* Market grid */}
+      <div className="grid grid-2" style={{ marginTop: "1rem" }}>
+        {markets.map((m) => (
           <MarketCard key={m.id} market={m} />
         ))}
       </div>
