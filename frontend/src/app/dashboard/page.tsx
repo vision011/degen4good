@@ -1,28 +1,16 @@
-import DonationStat from "../../components/DonationStat";
-
-export default function DashboardPage() {
+export default function Dashboard() {
   return (
-    <>
-      <div className="card">
-        <h1 className="page-title">Impact dashboard</h1>
-        <p className="page-subtitle">
-          This is what happens when degen energy is redirected. Every wrong
-          prediction routes a bit of the shared pool to real causes.
-        </p>
-      </div>
+    <div className="card">
+      <h1 className="page-title">Your Impact</h1>
+      <p className="page-subtitle">
+        All donations triggered from your predictions.
+      </p>
 
-      <div className="grid grid-2">
-        <DonationStat
-          label="Total donated"
-          value="$1,234.56"
-          hint="Mock value for now. In the real version, this reads on-chain from the pool."
-        />
-        <DonationStat
-          label="Wrong calls turned into impact"
-          value="87"
-          hint="Number of losing predictions that triggered a donation."
-        />
+      <div style={{ marginTop: "1.5rem", fontSize: "0.9rem" }}>
+        <p>Total Donations: <strong>3</strong></p>
+        <p>Total Amount Donated: <strong>0.30 SOL</strong></p>
+        <p>Last Donation Tx: <code>MockTx_xk49s2df</code></p>
       </div>
-    </>
+    </div>
   );
 }

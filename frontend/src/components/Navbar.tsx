@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+// NEW: import the wallet button
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+
 const links = [
   { href: "/", label: "Home" },
   { href: "/markets", label: "Markets" },
@@ -38,7 +41,14 @@ export default function Navbar() {
           degen<span style={{ color: "#22c55e" }}>4</span>good
         </Link>
 
-        <div style={{ display: "flex", gap: "0.75rem", fontSize: "0.9rem" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: "0.75rem",
+            fontSize: "0.9rem",
+            alignItems: "center",
+          }}
+        >
           {links.map((link) => {
             const active = pathname === link.href;
             return (
@@ -49,7 +59,9 @@ export default function Navbar() {
                   padding: "0.4rem 0.9rem",
                   borderRadius: 999,
                   border: active ? "1px solid #22c55e" : "1px solid transparent",
-                  backgroundColor: active ? "rgba(34,197,94,0.15)" : "transparent",
+                  backgroundColor: active
+                    ? "rgba(34,197,94,0.15)"
+                    : "transparent",
                   color: active ? "#f9fafb" : "#e5e7eb",
                   fontWeight: active ? 600 : 500,
                 }}
@@ -58,6 +70,9 @@ export default function Navbar() {
               </Link>
             );
           })}
+
+          {/* NEW: Phantom connect button */}
+          <WalletMultiButton />
         </div>
       </div>
     </nav>
