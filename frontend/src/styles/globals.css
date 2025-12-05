@@ -109,4 +109,43 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.7s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+/* Fade-in animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeIn 0.7s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Glow hover effect for buttons */
+.btn-primary,
+.btn-secondary {
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.45); /* green glow */
+  transform: translateY(-2px);
+}
+
   
